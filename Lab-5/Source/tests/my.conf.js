@@ -15,6 +15,19 @@ module.exports = function(config) {
 
     // list of files / patterns to load in the browser
     files: [
+      '../www/lib/js/angular/angular.js',	
+     
+         '../www/lib/js/ionic.js',
+      
+	 '../node_modules/angular-mocks/angular-mocks.js',
+	      
+	      '../www/lib/js/ionic-angular.min.js',
+         '../www/lib/js/angular-ui/angular-ui-router.js',
+         '../www/lib/js/*.js',
+        '../www/js/*.js',
+        '../tests/test.js'
+        
+        
     ],
 
 
