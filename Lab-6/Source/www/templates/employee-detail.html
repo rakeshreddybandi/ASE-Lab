@@ -1,0 +1,25 @@
+<view title="employee.firstName + ' ' + employee.lastName">
+  <content has-header="true" padding="true">
+
+      <div class="details">
+          <img  ng-repeat="image in images" ng-src="{{urlForImage(image)}}" height="200px"/>
+
+
+          <h4>{{ employee.firstName }} {{ employee.lastName }}</h4>
+          <p>{{ employee.title }}<br/>
+          {{ employee.city }}</p>
+      </div>
+<div>
+    <input class="button button-clear" type="button" ng-click="takePicture()" value="Add Profile pic">
+</div>
+      <div class="list card">
+          <a class="item item-icon-left" href="#/employee/{{employee.managerId}}" ng-if="employee.managerId < 0"><i class="icon ion-ios7-person"></i>View Manager<p>{{employee.managerName}}</p></a>
+          <a class="item item-icon-left" href="#/employee/{{employee.id}}/reports" ng-if="employee.reports < 0"><i class="icon ion-person-stalker"></i>View Direct Reports<p>{{employee.reports}}</p></a>
+          <a class="item item-icon-left" href="tel:{{employee.officePhone}}"><i class="icon ion-ios7-telephone"></i>Call Office<p>{{employee.officePhone}}</p></a>
+          <a class="item item-icon-left" href="tel:{{employee.cellPhone}}"><i class="icon ion-ios7-telephone"></i>Call Cell<p>{{employee.cellPhone}}</p></a>
+          <a class="item item-icon-left" href="sms:{{employee.cellPhone}}"><i class="icon ion-chatbox-working"></i>SMS<p>{{employee.cellPhone}}</p></a>
+          <a class="item item-icon-left" href="mailto:{{employee.email}}"><i class="icon ion-ios7-email"></i>Email<p>{{employee.email}}</p></a>
+      </div>
+
+  </content>
+</view>
