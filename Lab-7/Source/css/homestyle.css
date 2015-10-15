@@ -1,0 +1,80 @@
+
+#map-canvas {
+    width: inherit;
+    height: 300px;
+}
+h1 {
+    border-radius: 900px;
+    -moz-border-radius: 600px;
+    -webkit-border-radius: 600px;
+    background-color: #ffb6c1;
+    display: inline-block;
+
+
+    width: 600px;
+    z-index: 1;
+    font-family: Cambria, Hoefler Text, Liberation Serif, Times, Times New Roman, serif;
+    text-align:center;
+}
+#startlocation{
+
+    border-radius: 3px;
+    -moz-border-radius: 3px;
+    -webkit-border-radius: 3px;
+    border: 1px solid #ccc;
+    display: inline-block;
+    font-size: 17px;
+    padding: 12px 16px;
+    width: 210px;
+    border-color: #F5F3F0;
+    border-style: solid;
+    border-width: 4px;
+    display: inline-block;
+    position: relative;
+}
+#endlocation{
+    border-radius: 3px;
+    -moz-border-radius: 3px;
+    -webkit-border-radius: 3px;
+    border: 1px solid #ccc;
+    display: inline-block;
+    font-size: 17px;
+    padding: 12px 16px;
+    width: 210px;
+    border-color: #F5F3F0;
+    border-style: solid;
+    border-width: 4px;
+    display: inline-block;
+    position: relative;
+}
+.directbutton{
+    border-radius: 7px;
+    -moz-border-radius: 7px;
+    -webkit-border-radius: 7px;
+    background-color: #f6f6f6;
+    cursor: pointer;
+    margin-left: 12px;
+    height: 56px;
+    padding: 5px;
+    width: auto;
+}
+
+/* Put your css in here */
+body {
+    padding: 10px;
+}
+
+a {
+    cursor: pointer;
+}
+
+.form-control {
+    float: left;
+    margin-right: 10px;
+    width: 70%;
+}
+
+.forecast-img {
+    margin-right: 10px;
+    width: 45px;
+}

@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html lang="" data-ng-app="Welcomeapp">
+<head>
+    <meta t="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Angular Demo</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.4/angular.min.js" type="application/javascript"></script>
+    <script src="https://maps.googleapis.com/maps/api/js?v=3.exp&sensor=true"></script>
+    <link rel="stylesheet" href="css/Welcomestyle.css">
+    <script type="text/javascript" src="https://www.google.com/jsapi"></script>
+
+
+
+    <script type="text/javascript">
+
+
+     google.load("visualization", "1", {packages: ["corechart"]});
+     google.setOnLoadCallback(drawChart);
+
+ function drawChart() {
+
+     var data = google.visualization.arrayToDataTable([
+         ['keyword', 'count'],
+         ['Hello', 15],
+         ['Good', 9],
+         ['Solve', 7],
+         ['Problem', 7],
+         ['ASE', 6]
+     ]);
+
+     var options = {
+         title: 'Chat Statistics',
+         is3D:true,
+     };
+
+     var chart = new google.visualization.PieChart(document.getElementById('piechart'));
+
+     chart.draw(data, options);
+ }
+
+
+
+     function myFacebookLogin() {
+         FB.login(function(){
+             // Note: The call will only work if you accept the permission request
+             //alert("hello");
+             FB.api('/me/feed', 'post', {message: 'http://localhost:63342/Lab3Assign/Welcome.html'});
+             //alert("hello3");
+         }, {scope: 'publish_actions'});
+     }
+    </script>
+<style>
+    html {
+        background: url(bgimages/image3.jpg) no-repeat center center fixed;
+        -webkit-background-size: cover;
+        -moz-background-size: cover;
+        -o-background-size: cover;
+        background-size: cover;
+    }
+</style>
+</head>
+
+<body data-ng-controller="headpart">
+<script>
+    window.fbAsyncInit = function() {
+        FB.init({
+            appId      : '713215242112379',
+            xfbml      : true,
+            version    : 'v2.4'
+        });
+    };
+
+    (function(d, s, id){
+        var js, fjs = d.getElementsByTagName(s)[0];
+        if (d.getElementById(id)) {return;}
+        js = d.createElement(s); js.id = id;
+        js.src = "//connect.facebook.net/en_US/sdk.js";
+        fjs.parentNode.insertBefore(js, fjs);
+    }(document, 'script', 'facebook-jssdk'));
+</script>
+
+
+    <h1 id="welcome"></center></h1>
+
+    <div id="chart_div" style="width: 400px; height: 120px;">
+
+    </div>
+
+        <div class="form-style-5">
+            <form>
+                <fieldset ng-hide="myVar">
+                    <legend> Update Details</legend>
+                    <input type="text" ng-model="user.first" name="field1" id="work" placeholder="First Name">
+                    <input type="text" ng-model="user.last" name="field2" id="eat" placeholder="Last Name">
+                    <input type="text" ng-model="email" name="field3" id="commute" placeholder="Email or Phone Number">
+                    <input type="password" ng-model="password" name="field4" id="tv" placeholder="Password">
+                    <input type="password" ng-model="password2" name="field5" id="sleep" placeholder="Confirm Password">
+                    <input type="submit"  ng-hide="myVar" value="Submit Details" ng-click="update(user.first+' '+user.last,email,password)">
+
+                    <input type="submit"   ng-hide="otVar" value="Submit" ng-click="otherrest()">
+                    <input type="submit"   ng-hide="statVar" value="Submit" ng-click="Get Statistics()">
+
+                </fieldset>
+
+                <input type="submit" ng-hide="updateVar" value="Update" ng-click="toggle1()"/>
+                <input type="submit"   ng-hide="delVar" value="Confirm Delete" ng-click="delete()">
+                <input type="submit" ng-hide="deleteVar" value="Delete Account" ng-click="toggle2()"/>
+                <input type="submit" value="Yahoo Messenger Service" ng-click=""/>
+                <input type="submit" value="Get Statistics Diagram" ng-click="toggle3()"/>
+            </form>
+        </div>
+
+    <div  id="piechart" style="width: 900px; height: 500px;" ng-show="chartVar"></div>
+
+    <button class="directbutton" onclick="myFacebookLogin()">Share Data with Facebook</button>
+
+
+</body>
+</html>
+
+
+<script>
+    var app=angular.module('Welcomeapp', []);
+    app.controller('headpart', function ($scope,$http,$window, $httpParamSerializerJQLike) {
+
+        $scope.myVar=true;
+        $scope.updateVar=false;
+        $scope.deleteVar=false;
+        $scope.delVar=true;
+        $scope.chartVar=true;
+
+        var usernameper= localStorage.getItem("uname");
+        document.getElementById('welcome').innerHTML="Welcome "+usernameper;
+        $scope.toggle1 = function() {
+            $scope.myVar = !$scope.myVar;
+            $scope.updateVar=!$scope.updateVar;
+            $scope.delVar=true;
+            $scope.otVar=true;
+            $scope.statVar=true;
+
+        }
+        $scope.toggle2 = function() {
+            $scope.deleteVar=!$scope.deleteVar;
+            $scope.delVar=false;
+
+        }
+        $scope.toggle3 = function() {
+            $scope.chartVar=!$scope.chartVar;
+
+        }
+      /*  $scope.yahoorest = function(username,password) {
+            $http({
+                method: 'POST',
+                url : 'https://login.yahoo.com/WSLogin/V1/get_auth_token?&login='+username+'&passwd='+password+'&oauth_consumer_key=dj0yJmk9WkZkOWEwajNFeHFNJmQ9WVdrOU9UTXliREp2TjJjbWNHbzlNQS0tJnM9Y29uc3VtZXJzZWNyZXQmeD04Mw',
+                data: JSON.stringify({
+                    name: username,
+                    password: password,
+                }),
+                contentType: "application/json"
+            }).success(function() {
+               alert("success");
+            })
+        }
+
+        }*/
+        var iden=12;
+
+        $http({
+            method: 'GET',
+            url: 'https://api.mongolab.com/api/1/databases/aseproject/collections/users?apiKey=UqL5pHu1cpNVZciu9DjGsKcmiCLuTpkI'
+
+        }).success(function (data) {
+            var obj = angular.fromJson(data);
+            var count = 0;
+            for (i = 0; i < obj.length; i++) {
+                if (angular.equals(obj[i].name, usernameper)) {
+                    // alert('hie');
+                    iden = obj[i]._id.$oid;
+                    //alert(iden);
+
+                }
+                else {
+
+                    //alert("login unsuccessful");
+                }
+            }
+
+            // alert('hie');
+        });
+        $scope.update = function(username, email, password) {
+            console.log("inside login function");
+
+
+
+
+
+              //  alert(iden);
+                $http({
+                    method: 'PUT',
+                    url: 'https://api.mongolab.com/api/1/databases/aseproject/collections/users/' + iden + '?apiKey=UqL5pHu1cpNVZciu9DjGsKcmiCLuTpkI',
+                    data: JSON.stringify({
+                        "$set": {
+                            name: username,
+                            password: password,
+                            email: email
+                        }
+                    }),
+                    contentType: "application/json"
+                }).success(function () {
+                    // $scope.user.first ="";
+                    // $scope.user.last ="";
+                    // $scope.password ="";
+                    // $scope.email ="";
+                    alert("Updated Successfully");
+                    $scope.myVar = !$scope.myVar;
+                    $scope.updateVar=!$scope.updateVar;
+                    // $scope.msg ="User created successfully";
+                })
+            }
+
+
+        $scope.delete = function() {
+            console.log("inside login function");
+            $http({
+                method: 'DELETE',
+                async: true,
+                url : 'https://api.mongolab.com/api/1/databases/aseproject/collections/users/' + iden + '?apiKey=UqL5pHu1cpNVZciu9DjGsKcmiCLuTpkI',
+                timeout: 300000
+            }).success(function() {
+                alert("Deleted Successfully");
+                $window.location.href = '/Lab3Assign/index.html';
+            })
+        }
+
+    });
+
+</script>
