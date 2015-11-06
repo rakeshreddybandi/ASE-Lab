@@ -1,0 +1,297 @@
+<!doctype html>
+<html>
+<head>
+
+
+    <meta charset="utf-8">
+    <title>SignUp</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.4/angular.min.js" type="application/javascript"></script>
+    <script src="js/app.js"></script>
+    <style>
+        html {
+            background: url(bgimages/soft-color-blurred-background-rocks-hd-wallpaper-abstrack-photo-blurred-colors-hd-wallpaper.jpg) no-repeat center center fixed;
+            -webkit-background-size: cover;
+            -moz-background-size: cover;
+            -o-background-size: cover;
+            background-size: cover;
+        }
+        h1 {
+            border-radius: 900px;
+            -moz-border-radius: 600px;
+            -webkit-border-radius: 600px;
+            background-color: #ffb6c1;
+            display: inline-block;
+            margin: 0 auto;
+            position: relative;
+            top: 52px;
+            width: 339px;
+            z-index: 1;
+            font-family: Cambria, Hoefler Text, Liberation Serif, Times, Times New Roman, serif;
+            text-align:center;
+        }
+        button {
+            margin: 0;
+            padding: 0;
+            border: 0;
+            font-weight: normal;
+            font-style: normal;
+            font-size: 100%;
+            line-height: 1;
+            font-family: inherit;
+        }
+        html { background-color: white }
+        body {
+            color: black;
+            font-family: "Helvetica Neue",Helvetica,Arial,Verdana,sans-serif;
+            font-size: 13px;
+            text-align: center;
+        }
+        input[type=text]:not(.basic),
+        input[type=tel]:not(.basic),
+        input[type=email]:not(.basic),
+        input[type=password]:not(.basic),
+        select:not(.basic),
+        textarea:not(.basic) {
+            border-radius: 3px;
+            -moz-border-radius: 3px;
+            -webkit-border-radius: 3px;
+            border: 1px solid #ccc;
+            display: inline-block;
+            font-size: 17px;
+            padding: 12px 16px;
+            width: 300px;
+        }
+        body>#signup {
+            border-top: 8px solid #f90;
+            margin: 0 auto;
+            padding: 40px 0 0;
+            width: 100%;
+        }
+        body>#signup #signup_form { margin-top: 75px }
+        #signup_form {
+            border-radius: 10px;
+            -moz-border-radius: 10px;
+            -webkit-border-radius: 10px;
+            box-sizing: border-box;
+            -moz-box-sizing: border-box;
+            -wekbit-box-sizing: border-box;
+            border: 8px solid #F5F3F0;
+            margin: 87px auto 0;
+            padding: 80px 0 65px;
+            position: relative;
+            width: 800px;
+            z-index: 0;
+        }
+        #signup_form.locked input,
+        #signup_form.locked button { opacity: 0.6 }
+        #signup_form.locked button { cursor: default }
+        #signup_form.locked button:hover,
+        #signup_form.locked button:active { background-color: rgba(102,229,46,0.1) }
+        #signup_form input {
+            border-color: #F5F3F0;
+            border-style: solid;
+            border-width: 4px;
+            display: inline-block;
+            margin: 0 15px 0 0;
+            position: relative;
+        }
+        #signup_form input:focus {
+            border-color: #59de2c;
+            border-width: 2px;
+            padding: 14px 18px;
+        }
+        #signup_form select:focus {
+            border-color: #59de2c;
+            border-width: 2px;
+            padding: 14px 18px;
+        }
+        #signup_form select{
+            border-color: #F5F3F0;
+            border-style: solid;
+            border-width: 4px;
+            display: inline-block;
+            margin: 0 15px 0 0;
+            position: relative;
+            width:inherit;
+        }
+        #signup_form input#signup_full_name_field { width: 205px}
+        #signup_form input#signup_email_field { width: 260px }
+        #signup_form input#signup_reemail_field{ width: 260px }
+        #signup_form input#signup_password_field { width: 185px }
+        #signup_form input#Date_of_birth { width: 50px }
+        #signup_form input#Date_of_birth#Date_of_birth1 { width: 50px }
+        #signup_form select#dob { width: 50px; }
+        #signup_form input#gender { width: 100px }
+        #Date_of_birth1{
+            align-content:center;
+            font-family:"Gill Sans", "Gill Sans MT", "Myriad Pro", "DejaVu Sans Condensed", Helvetica, Arial, "sans-serif";
+            font-size:24px;
+            color:#B3AFAF;
+        }
+        #dob{
+            color:#B3AFAF;
+            size:50px;
+        }
+        #month{
+            color:#B3AFAF;
+        }
+        #year{
+            color:#B3AFAF;
+        }
+        #day{
+            color:#B3AFAF;
+        }
+        .gendergrp{
+            align-content:space-between;
+            align-items:flex-start;
+            alignment-adjust:central;
+            column-gap:normal;
+            font-family:Baskerville, "Palatino Linotype", Palatino, "Century Schoolbook L", "Times New Roman", serif;
+            text-justify:distribute;
+            font-size:24px;
+            color:#B3AFAF;
+        }
+        #signup_form button {
+            border-radius: 4px;
+            -moz-border-radius: 4px;
+            -webkit-border-radius: 4px;
+            background-color: rgba(102,229,46,0.1);
+            cursor: pointer;
+            height: 56px;
+            margin-left: 15px;
+            padding: 5px;
+            width: auto;
+        }
+        #signup_form button:hover { background-color: rgba(102,229,46,0.18) }
+        #signup_form button:active { padding: 5px }
+        #signup_form button:active .button_text {
+            box-shadow: 0 0 8px rgba(102,229,46,0.07);
+            -moz-box-shadow: 0 0 8px rgba(102,229,46,0.07);
+            -webkit-box-shadow: 0 0 8px rgba(102,229,46,0.07);
+            background-color: #4bbe18;
+            background-repeat: repeat-x;
+            background-image: linear-gradient(top, #4adc1c, #4bbe18);
+            background-image: -khtml-gradient(linear, left top, left bottom, from(#4adc1c), to(#4bbe18));
+            background-image: -moz-linear-gradient(top, #4adc1c, #4bbe18);
+            background-image: -ms-linear-gradient(top, #4adc1c, #4bbe18);
+            background-image: -o-linear-gradient(top, #4adc1c, #4bbe18);
+            background-image: -webkit-gradient(linear, left top, left bottom, color-stop(0%, #4adc1c), color-stop(100%, #4bbe18));
+            background-image: -webkit-linear-gradient(top, #4adc1c, #4bbe18);
+            height: 46px;
+            width: auto;
+        }
+        #signup_form button .button_text {
+            border-radius: 4px;
+            -moz-border-radius: 4px;
+            -webkit-border-radius: 4px;
+            box-shadow: 0 0 4px rgba(102,229,46,0.2);
+            -moz-box-shadow: 0 0 4px rgba(102,229,46,0.2);
+            -webkit-box-shadow: 0 0 4px rgba(102,229,46,0.2);
+            background-color: #3baf16;
+            background-repeat: repeat-x;
+            background-image: linear-gradient(top, #66e52e, #3baf16);
+            background-image: -khtml-gradient(linear, left top, left bottom, from(#66e52e), to(#3baf16));
+            background-image: -moz-linear-gradient(top, #66e52e, #3baf16);
+            background-image: -ms-linear-gradient(top, #66e52e, #3baf16);
+            background-image: -o-linear-gradient(top, #66e52e, #3baf16);
+            background-image: -webkit-gradient(linear, left top, left bottom, color-stop(0%, #66e52e), color-stop(100%, #3baf16));
+            background-image: -webkit-linear-gradient(top, #66e52e, #3baf16);
+            color: #fff;
+            display: inline-block;
+            font-size: 18px;
+            font-weight: bold;
+            height: 46px;
+            line-height: 46px;
+            padding: 0 25px;
+            text-shadow: 0 0 3px #246b0d;
+            width: auto;
+        }
+        #msgs{
+            font-family: "Helvetica Neue", Helvetica, Arial, Verdana, sans-serif;
+            font-size: x-large;
+            font-style: italic;
+            color:#ff0a02;
+            background-color: lightpink;
+        }
+    </style>
+
+
+</head>
+
+<body ng-app="myApp" ng-controller="RegisterController">
+
+<h1 ><center> Multi-Messenger</center></h1>
+
+<div id="signup">
+    <form id="signup_form">
+        <div id="signup_full_name_field">
+            <p>
+                <input type="text" ng-model="user.first" placeholder="First Name">
+            </p>
+
+        </div>
+        <div id="signup_last_name_field">
+            <p>
+                <input type="text" ng-model="user.last" placeholder="Last Name">
+            </p>
+
+        </div>
+
+
+        <div id="signup_email_field">
+            <p>
+                <input type="text" ng-model="email"placeholder="Email or Mobile Number">
+            </p>
+        </div>
+
+        <div id="signup_reemail_field">
+            <p>
+                <input type="text" placeholder="Re-enter Email or Mobile Number">
+            </p>
+        </div>
+
+        <div id="signup_password_field">
+            <p>
+                <input type="Password"  ng-model="password" placeholder="Password">
+            </p>
+        </div>
+        <div id="Date_of_birth">
+            <p >
+                <label id="Date_of_birth1"> Birthday</label>
+            </p>
+        </div>
+        <div id="dob" >
+            <select aria-label="Month" name="birthday_month" id="month" title="Month" class="_5dba" ><option value="0" selected="1">Month</option><option value="1">Jan</option><option value="2">Feb</option><option value="3">Mar</option><option value="4">Apr</option><option value="5">May</option><option value="6">Jun</option><option value="7">Jul</option><option value="8">Aug</option><option value="9">Sep</option><option value="10">Oct</option><option value="11">Nov</option><option value="12">Dec</option></select>
+
+            <select aria-label="Day" name="birthday_day" id="day" title="Day" class="_5dba"><option value="0" selected="1">Day</option><option value="1">1</option><option value="2">2</option><option value="3">3</option><option value="4">4</option><option value="5">5</option><option value="6">6</option><option value="7">7</option><option value="8">8</option><option value="9">9</option><option value="10">10</option><option value="11">11</option><option value="12">12</option><option value="13">13</option><option value="14">14</option><option value="15">15</option><option value="16">16</option><option value="17">17</option><option value="18">18</option><option value="19">19</option><option value="20">20</option><option value="21">21</option><option value="22">22</option><option value="23">23</option><option value="24">24</option><option value="25">25</option><option value="26">26</option><option value="27">27</option><option value="28">28</option><option value="29">29</option><option value="30">30</option><option value="31">31</option></select>
+
+            <select aria-label="Year" name="birthday_year" id="year" title="Year" class="_5dba"><option value="0" selected="1">Year</option><option value="2015">2015</option><option value="2014">2014</option><option value="2013">2013</option><option value="2012">2012</option><option value="2011">2011</option><option value="2010">2010</option><option value="2009">2009</option><option value="2008">2008</option><option value="2007">2007</option><option value="2006">2006</option><option value="2005">2005</option><option value="2004">2004</option><option value="2003">2003</option><option value="2002">2002</option><option value="2001">2001</option><option value="2000">2000</option><option value="1999">1999</option><option value="1998">1998</option><option value="1997">1997</option><option value="1996">1996</option><option value="1995">1995</option><option value="1994">1994</option><option value="1993">1993</option><option value="1992">1992</option><option value="1991">1991</option><option value="1990">1990</option><option value="1989">1989</option><option value="1988">1988</option><option value="1987">1987</option><option value="1986">1986</option><option value="1985">1985</option><option value="1984">1984</option></select>
+        </div>
+        <div id="gender">
+            <p>
+                <input type="radio" name="sex" value="1" id="u_0_d">
+                <label class="gendergrp" for="u_0_d">Female</label>
+                <input type="radio" name="sex" value="2" id="u_0_e">
+                <label class="gendergrp" for="u_0_e">Male</label>
+            </p>
+        </div>
+
+
+        <button id="">
+            <span class="button_text" ng-click="register(user.first+' '+user.last,password,email)">Sign Up</span>
+        </button>
+
+        <div id="sign_in_options" class="field_container">
+            <div id="sign_in_alternatives_container">
+                <span id="newuser_option">By clicking Sign Up, you agree to our <a href="#"  class="login_link">Terms</a> and that you have read our <a href="#"  class="login_link">Data Policy</a>, including our <a href="#"  class="login_link">Cookie</a> Use.</span>
+            </div>
+
+        </div>
+    </form>
+</div>
+<div id="msgs"> {{ msg }}</div>
+</div>
+</div>
+
+</body>
+</html>
